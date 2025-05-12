@@ -1,41 +1,51 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Task from './Components/Task';
+import { View, Text, StyleSheet } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      {/* Today's Task */}
-      <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>Today's tasks</Text>
-        <View style={styles.items}>
-          {/* This is where the tasks will go! */}
-          <Task text="Task 1" />
-          <Task text="Task 2" />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
+const Task = (props) => {
+    return (
+        <View style={styles.item}>
+            <View style={styles.itemLeft}>
+                <View style={styles.square}></View>
+                <Text style={styles.itemText}>{props.text}</Text>
+            </View>
+            <View style={styles.circular}></View>
         </View>
-      </View>
-    </View>
-  );
-}
+    );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#EBEAED',
-  },
-  tasksWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold'
-  },
-  items: {
-    marginTop: 30,
-  },
+    item: {
+        backgroundColor: '#FFF',
+        padding: 15,
+        borderRadius: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 20,
+    },
+    itemLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+    },
+    square: {
+        width: 24,
+        height: 24,
+        backgroundColor: '#55BCF6',
+        opacity: 0.4,
+        borderRadius: 5,
+        marginRight: 15,
+    },
+    itemText: {
+        maxWidth: '80%',
+    },
+    circular: {
+        width: 12,
+        height: 12,
+        borderColor: '#55BCF6',
+        borderWidth: 2,
+        borderRadius: 5,
+    },
 });
+
+export default Task;
